@@ -15,9 +15,36 @@ const userSchema = new mongoose.Schema(
             required: true,
             enum: ["CMPN", "INFT", "ENCS", "EXTC", "ELEC"],
         },
-        contact:{
-        type:String,
-        required:true
+        password:{
+            type: String,
+            required: true,
+            minlength:8
+        },
+        workinghours:{
+            start:{
+                type: String,
+                required: true,
+                default: 09:00
+            },
+            end:{
+                type: String,
+                required:true,
+                default:17:00
+            }
+        },
+        isActive: {
+            type: Boolean,
+            default: true,
+        },
+        refreshToken: String,
+        deviceInfo: {
+            deviceId: String,
+            deviceType: String,
+            lastKnownLocation: {
+            latitude: Number,
+            longitude: Number,
+            timestamp: Date,
+            }
         }
     }, { timestamps: true }
 );
